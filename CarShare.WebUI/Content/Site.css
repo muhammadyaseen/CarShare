@@ -1,0 +1,322 @@
+﻿html, body {
+    width: 100%;
+    min-width: 1024px;
+    margin: 0;
+    padding: 0;
+    font-family: "Helvetica Neue", Helvetica, Tahoma, sans-serif;
+    background: white;
+    /*background: #E3E6EC;*/
+    
+}
+
+p {
+    font-size: 15px;
+    font-family: "Helvetica Neue", Helvetica, Tahoma, sans-serif;
+    color: #46484d;
+    margin: 0;
+    padding: 0;
+}
+
+.wrap {
+    width : 960px;
+    margin: 0 auto;
+    /*border: 1px solid red;*/
+    /*min-height: 40px;*/
+}
+
+header{
+    width:100%;
+    min-width: 1024px;
+    margin:0; padding:0;
+    background-color:#4585f2;
+    /*height:50px;*/
+}
+.logo {
+    
+    width: 400px;
+}
+.logo img{
+  opacity: 1.0;
+  filter: alpha(opacity=100);
+   
+}
+.logo img:hover{
+  opacity: 0.4;
+  filter: alpha(opacity=40); 
+   
+}
+
+#nav-box{
+    margin: 4px;
+
+}
+ul#main-nav {
+    list-style-type: none;
+    
+}
+
+ul#main-nav li {
+    float: left;
+}
+
+ul#main-nav li a{
+    text-decoration: none;
+    display: inline-block;
+    background: #6495ED;
+    padding: 4px;
+    text-align: center;
+    width: 90px;
+    height: 30px;
+    padding: 4px;
+    margin-left: 6px;
+}
+#nav-box {
+    
+    width: 600px;
+    margin: 4px 0 4px 100px;
+}
+
+
+#site-content-area
+{
+    min-height: 500px;
+    background : white;
+    
+}
+
+
+h4.about-heading
+{
+    font-family: 'Yanone Kaffeesatz', sans-serif;
+    font-size: 28px;
+    padding: 5px 8px;
+    
+}
+
+p.intro-para{
+  /*width:500px;*/
+  text-align: justify;
+    color:black;
+    padding: 10px;
+
+}
+.home-info-box
+{
+    width: 550px;
+    min-height: 400px;
+    min-width: 200px;
+    /*background: red;*/
+    margin: 10px 0 10px 10px;
+    /*padding: 20px;*/
+}
+
+.sign-up-box
+{
+    width: 360px;
+    min-height: 400px;
+    min-width: 200px;
+    /*background: yellow;*/
+    margin: 10px 10px 10px 0;
+}
+
+.home-video
+{
+    height: 300px;
+    width: 500px;
+    margin: 20px auto;
+    
+}
+
+
+a {
+    /*display:inline;*/
+    /*width: 90px;*/
+    color:white;
+    /*margin-left: 20px;*/
+
+}
+
+span{
+
+    color:lightgreen;
+}
+
+span:hover{
+    color:white;
+}
+a:hover{
+    color:#ffff00;
+}
+
+#loginbox{
+    margin-left:750px;
+    margin-top:60px;
+
+}
+
+.txtBoxLarge {
+  font-size:20px;
+  /*height:50px;*/
+  left:0;
+  line-height:33px;
+  padding:8px 8px 7px;
+  top:0;
+  width:330px;
+}
+.btn{
+width:260px;
+height:50px;
+margin-left:750px
+}
+.signin-btn{
+width:330px;
+height:45px;
+border:none;
+outline:none;
+box-shadow:0 3px 2px 0 #2c80a2;
+color:#fff;
+font-size:14px;
+text-shadow:0 1px rgba(0,0,0,0.4);
+background-color:#41A317;
+font-weight:700;
+background-image:url(../images/1.png);
+background-repeat:no-repeat;
+background-position:200px;
+}
+.signin-btn:hover{
+background-color: #6CBB3C;
+cursor:pointer
+}
+.signin-btn:active{
+padding-top:2px;
+box-shadow:none
+}
+.btn1{
+width:260px;
+height:50px;
+margin-left:730px
+}
+.signup-btn{
+width:330px;
+height:45px;
+border:none;
+outline:none;
+box-shadow:0 3px 2px 0 #2c80a2;
+color:#fff;
+font-size:14px;
+text-shadow:0 1px rgba(0,0,0,0.4);
+background-color:#3366cc;
+font-weight:700;
+background-image:url(../images/1.png);
+background-repeat:no-repeat;
+background-position:200px;
+
+}
+
+.signup-btn:hover{
+background-color: #0080ff;
+cursor:pointer;
+text-align:none;
+}
+
+.signup-btn:active{
+padding-top:2px;
+box-shadow:none;
+}
+
+#signup{
+
+  margin-left: 750px;
+}
+
+#sitename{
+
+  margin-left:150px;
+  margin-top:-50px;
+}
+
+
+h1,h2,h3,h4,h5{
+  color:black;
+  padding: 0; margin: 0;
+}
+
+#about{
+/*margin-left: 70px;*/
+/*margin-top: -320px;*/
+}
+
+#box{
+/*    width:500px;    
+    height:430px;*/
+    background:#f3f6ff;
+    border-radius:20px;
+    padding: 10px;
+
+}
+#texta{
+  font-size: 20px;
+  left:0;
+  
+  padding:8px 8px 7px;
+  top:0;
+}
+footer{
+  background-color: lightgray;
+  width:100%; margin:0; padding:0;
+  min-width: 1024px;
+  margin-top: 25px;
+  height:90px;
+}
+
+/* test Styles */
+
+.blackBorder1px {
+    border : 1px solid black !important;
+}
+
+
+.redBorder1px {
+    border : 1px solid red !important;
+}
+
+.clear-both {
+    clear: both;
+}
+
+.float-left {
+    float: left;
+}
+
+.float-right {
+    float: right;
+}
+
+.margin10px {
+    
+    margin: 10px;
+}
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+    color: #f00;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #f00;
+    background-color: #fee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-valid {
+    display: none;
+}

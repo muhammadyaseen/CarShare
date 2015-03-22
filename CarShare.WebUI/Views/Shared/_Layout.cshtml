@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    <link href='http://fonts.googleapis.com/css?family=Armata|Yanone+Kaffeesatz' rel='stylesheet' type='text/css'>
+
+    @RenderSection("styles", false)  <!-- page specific styles or those required by JS libs -->
+
+    @Scripts.Render("~/bundles/jquery")
+
+    @RenderSection("scripts", required: false) <!-- Page specific JS code -->
+
+</head>
+<body>
+
+    <header>        
+        <div class="logo float-left">
+            
+            <img src="@Url.Content("~/Content/Images/logo.png")" alt="Logo" />
+            
+        </div>
+
+        <div id="nav-box" class="float-right">
+            
+            <ul id="main-nav">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">How it Works</a></li>
+                <li><a href="#">Help</a></li>
+            </ul>
+            
+        </div>
+        
+        <div class="clear-both"></div>
+        
+    </header>
+    
+    <div id="site-content-area" class="wrap">
+        
+        @RenderBody()
+
+    </div>
+
+    <footer>
+        
+        
+    </footer>
+    
+
+
+</body>
+</html>
