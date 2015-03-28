@@ -11,7 +11,7 @@ namespace CarShare.Domain.Abstract
     {
         User GetUserByID(int userID);
 
-        void Save(User user);
+        int Save(User user);
 
         User Authenticate(string userName, string pwd);
     }

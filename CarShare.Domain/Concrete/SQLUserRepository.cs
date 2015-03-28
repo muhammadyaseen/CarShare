@@ -34,15 +34,65 @@ namespace CarShare.Domain.Concrete
                 }
                 else
                 {
+                    sqlConn.Close();
+
                     return null;
                 }
             }
 
         }
 
-        public void Save(User user)
+        public int Save(User user)
         {
-            throw new NotImplementedException();
+            sqlConn.Open();
+
+            SqlCommand cmd = new SqlCommand("INSERT INTO [User]"
+            + "         (Name, Email, Password, NIC, ContactNo, Status, Image, DriverLicense, Address, PersonalDesc)"
+            + " VALUES (@name, @email, @pwd, @nic, @cno, @status, @img, @dl, @addr, @pdesc)", sqlConn);
+
+            SqlParameter nameParam = new SqlParameter("name", user.Name);
+            cmd.Parameters.Add(nameParam);
+
+            SqlParameter emailParam = new SqlParameter("email", user.Email);
+            cmd.Parameters.Add(emailParam);
+
+            SqlParameter pwdParam = new SqlParameter("pwd", user.Password);
+            cmd.Parameters.Add(pwdParam);
+
+            SqlParameter nicParam = new SqlParameter("nic", user.NIC);
+            cmd.Parameters.Add(nicParam);
+
+            SqlParameter contactParam = new SqlParameter("cno", user.ContactNumber);
+            cmd.Parameters.Add(contactParam);
+
+            SqlParameter stParam = new SqlParameter("status", user.Status);
+            cmd.Parameters.Add(stParam);
+
+            SqlParameter imgParam = new SqlParameter("img", user.Image);
+            cmd.Parameters.Add(imgParam);
+
+            SqlParameter dlParam = new SqlParameter("dl", user.DriversLicense);
+            cmd.Parameters.Add(dlParam);
+
+            SqlParameter addrParam = new SqlParameter("addr", user.Address);
+            cmd.Parameters.Add(addrParam);
+
+            SqlParameter pdescParam = new SqlParameter("pdesc", user.PersonalDesc);
+            cmd.Parameters.Add(pdescParam);
+
+            try
+            {
+                return cmd.ExecuteNonQuery();
+            }
+            catch (Exception e)
+            {
+                return -1; //some error occurced
+            }
+            finally
+            {
+                sqlConn.Close();
+            }
+
         }
 
         public User Authenticate(string email, string pwd)
@@ -51,7 +101,7 @@ namespace CarShare.Domain.Concrete
 
             SqlCommand cmd = new SqlCommand("SELECT * FROM [User] WHERE Email = @email AND Password = @pwd", sqlConn);
 
-            SqlParameter emailParam = new SqlParameter("id", email);
+            SqlParameter emailParam = new SqlParameter("email", email);
 
             cmd.Parameters.Add(emailParam);
 
@@ -68,6 +118,8 @@ namespace CarShare.Domain.Concrete
                 }
                 else
                 {
+                    sqlConn.Close();
+
                     return null;
                 }
             }
@@ -75,7 +127,8 @@ namespace CarShare.Domain.Concrete
 
         private User GetFromDatareader(SqlDataReader sqlReader)
         {
-            return new User(
+            
+           User u =  new User(
 
                 int.Parse(sqlReader["UserID"].ToString()),
                 sqlReader["Name"].ToString(),
@@ -89,6 +142,10 @@ namespace CarShare.Domain.Concrete
                 sqlReader["Status"].ToString(),
                 sqlReader["ContactNo"].ToString()
             );
+
+           sqlConn.Close();
+
+           return u;
         }
     }
 }

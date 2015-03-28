@@ -1,4 +1,6 @@
-﻿@{
+﻿@model CarShare.Domain.Entities.User
+
+@{
     ViewBag.Title = "CarShare : SignUp";
 }
 
@@ -29,7 +31,7 @@
             
         <h1>SIGN UP</h1>
         
-         <form action="#" name="signup">
+         <!--<form action="#" name="signup">
                 
             <input class="txtBoxLarge" type="text" required name="sname" placeholder="Username" >
             <br>
@@ -49,7 +51,53 @@
 
             <textarea id="texta" required name="sdesc"  cols="27" rows="6" placeholder="Personal Description" ></textarea>
             
-        </form>
+        </form>-->
+
+            
+            @using (Html.BeginForm("SignUp","Profile", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.ValidationMessageFor(x => x.Name)
+
+                @Html.EditorFor(x => x.Name)
+
+                @Html.ValidationMessageFor(x => x.Email)
+
+                @Html.EditorFor(x => x.Email)
+
+                @Html.ValidationMessageFor(x => x.Password)
+
+                @Html.EditorFor(x => x.Password)
+
+                @Html.ValidationMessageFor(x => x.PasswordAgain)
+
+                @Html.EditorFor(x => x.PasswordAgain)
+
+                @Html.ValidationMessageFor(x => x.NIC)
+
+                @Html.EditorFor(x => x.NIC)
+
+                @Html.ValidationMessageFor(x => x.ContactNumber)
+
+                @Html.EditorFor(x => x.ContactNumber)
+
+                @Html.ValidationMessageFor(x => x.DriversLicense)
+
+                @Html.EditorFor(x => x.DriversLicense)
+
+                @Html.ValidationMessageFor(x => x.Address)
+
+                @Html.EditorFor(x => x.Address)                
+
+                @Html.ValidationMessageFor(x => x.PersonalDesc)
+
+                @Html.EditorFor(x => x.PersonalDesc)
+
+                <input type="file" name="Image" id="image1" />
+
+                 <input type="submit" value="Sign Up"/>
+
+            }
+
 
         </div>
         

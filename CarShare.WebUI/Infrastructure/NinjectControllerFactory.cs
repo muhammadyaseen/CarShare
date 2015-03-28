@@ -7,6 +7,7 @@ using CarShare.Domain.Concrete;
 using System.Web.Mvc;
 using Ninject;
 using System.Web.Routing;
+using System.Web.Security;
 
 namespace CarShare.WebUI.Infrastructure
 {
@@ -26,7 +27,7 @@ namespace CarShare.WebUI.Infrastructure
             ninjectKernel.Bind<IUserRepository>().To<SQLUserRepository>();
 
             //ninjectKernel.Bind<IUserRepository>().To<EFUserRepository>();
-            //ninjectKernel.Inject(Membership.Provider);
+            ninjectKernel.Inject(Membership.Provider);
         }
 
         protected override IController GetControllerInstance(RequestContext context, Type controllerType)

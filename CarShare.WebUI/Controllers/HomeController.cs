@@ -21,16 +21,9 @@ namespace CarShare.WebUI.Controllers
 
         public ActionResult Index()
         {
-            User u = userRepo.GetUserByID(1);
-
-            return View(u);
+            return View();
         }
 
-        public ActionResult Login()
-        {
-            User u = userRepo.Authenticate("john.d@email.com", "test");
 
-            return View(u);
-        }
     }
 }

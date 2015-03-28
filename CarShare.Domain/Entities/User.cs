@@ -17,7 +17,7 @@ namespace CarShare.Domain.Entities
         public int UserID { get; set; }
 
         [Required(ErrorMessage = "Please enter your name")]
-        [StringLength(50, ErrorMessage = "Name must be under 256 characters in length")]
+        [StringLength(50, ErrorMessage = "Name must be under 50 characters in length")]
         public string Name { get; set; }
 
         [Required(ErrorMessage = "Please enter email")]
@@ -38,17 +38,20 @@ namespace CarShare.Domain.Entities
 
         [Required(ErrorMessage = "Please enter your CNIC")]
         [StringLength(15, ErrorMessage = "Maximum Length is 15 characters")]
+        [RegularExpression(@"^(\d)*$", ErrorMessage = "Please enter only numbers")]
         public string NIC { get; set; }
 
-        [Required(ErrorMessage = "Please enter your CNIC")]
+        [Required(ErrorMessage = "Please enter your Drivers License")]
         [StringLength(15, ErrorMessage = "Maximum Length is 15 characters")]
         public string DriversLicense { get; set; }
 
         [DataType(DataType.Password)]
         [NotMapped]
+        [Required(ErrorMessage = "Please re-enter your password")]
         public string PasswordAgain { get; set; }
 
         [StringLength(200, ErrorMessage = "Maximum Length is 200 characters")]
+        [DataType(DataType.MultilineText)]
         public string PersonalDesc { get; set; }
 
         public string Image { get; set; }

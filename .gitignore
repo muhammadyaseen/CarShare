@@ -225,3 +225,4 @@ pip-log.txt
 /CarShare.WebUI/Content/themes/
 /CarShare.WebUI/Scripts/
 /packages/
+/CarShare.WebUI/App_Data/

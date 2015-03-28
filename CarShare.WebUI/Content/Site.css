@@ -119,6 +119,17 @@ p.intro-para{
     margin: 10px 10px 10px 0;
 }
 
+    .sign-up-box input[type=text], .sign-up-box input[type=password] {
+        
+          font-size:20px;
+            /*height:50px;*/
+            left:0;
+            line-height:33px;
+            padding:5px;
+            top:0;
+            width:330px;
+            margin: 10px;
+    }
 .home-video
 {
     height: 300px;

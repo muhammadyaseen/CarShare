@@ -41,8 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\ICarRepository.cs" />
     <Compile Include="Abstract\IUserRepository.cs" />
+    <Compile Include="Concrete\SQLCarRepository.cs" />
     <Compile Include="Concrete\SQLUserRepository.cs" />
+    <Compile Include="Entities\Car.cs" />
+    <Compile Include="Entities\CarImage.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
