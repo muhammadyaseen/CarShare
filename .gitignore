@@ -215,10 +215,10 @@ pip-log.txt
 .mr.developer.cfg
 
 #image formats
-*.jpeg
-*.jpg
-*.png
-*.gif
+#*.jpeg
+#*.jpg
+#*.png
+#*.gif
 
 
 #jquery libs

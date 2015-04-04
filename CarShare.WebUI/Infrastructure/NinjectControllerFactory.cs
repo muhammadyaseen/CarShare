@@ -26,6 +26,8 @@ namespace CarShare.WebUI.Infrastructure
         {
             ninjectKernel.Bind<IUserRepository>().To<SQLUserRepository>();
 
+            ninjectKernel.Bind<ICarRepository>().To<SQLCarRepository>();
+
             //ninjectKernel.Bind<IUserRepository>().To<EFUserRepository>();
             ninjectKernel.Inject(Membership.Provider);
         }

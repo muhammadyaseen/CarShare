@@ -1,4 +1,5 @@
 ﻿using CarShare.Domain.Entities;
+using CarShare.Domain.ViewEntities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,7 @@ namespace CarShare.Domain.Abstract
 
         IEnumerable<Car> GetCarsOwnedBy(int userID);
 
-
+        DetailsView GetCarAndAssociatedDetails(int carID);
 
     }
 }

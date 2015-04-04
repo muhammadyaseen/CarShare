@@ -49,10 +49,9 @@
     <Compile Include="Entities\CarImage.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewEntities\DetailsView.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ViewEntities\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>

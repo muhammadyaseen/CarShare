@@ -6,7 +6,18 @@ using System.Threading.Tasks;
 
 namespace CarShare.Domain.Entities
 {
-    class CarImage
+    public class CarImage
     {
+        public int CarImageID;
+        public int CarID;
+        public string Image;
+
+        public CarImage(int ciid, int cid, string img)
+        {
+            // TODO: Complete member initialization
+            this.CarImageID = ciid;
+            this.CarID = cid;
+            this.Image = img;
+        }
     }
 }

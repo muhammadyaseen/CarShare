@@ -1,0 +1,49 @@
+﻿    @model CarShare.Domain.ViewEntities.DetailsView
+
+@{
+    ViewBag.Title = Model.Car.Title + " details";
+}
+
+<div id="show-case" class="float-left">
+		
+		<!-- vehicle title -->
+		
+		<h2 class="car-title">@Model.Car.Title</h2>
+		
+		<!-- image show case -->
+		
+		<img src="/@Url.Content(Model.Car.CarImageList.First().Image)" class="car-image" alt="Car Image" />
+		
+		<!-- car description -->
+		
+		<h4>Car Description</h4>
+		
+		<p class="desc-text">
+			@Model.Car.CarDesc
+		</p>
+		</div>
+		
+        <div id="vehicle-info-box" class="float-right right-box">
+			<h4>Vehicle Information</h4>
+			<table>
+				<tr><td class="field">Make</td> 		<td class="value">@Model.Car.Make</td></tr>
+				<tr><td class="field">Model</td> 		<td class="value">@Model.Car.Model</td></tr>
+				<tr><td class="field">Location</td> 	<td class="value">@Model.Car.Location</td></tr>
+				<tr><td class="field">Capacity</td> 	<td class="value">@Model.Car.MaxCapacity</td></tr>
+				<tr><td class="field">Registration</td> <td class="value">@Model.Car.RegNo</td></tr>
+			</table>
+			
+
+		</div>
+		
+		<div id="owner-info-box" class="float-right right-box">
+			<h4>Owner Information</h4>
+			
+			<table>
+				<tr><td class="field">Name</td> 		<td class="value">@Model.User.Name</td></tr>
+				<tr><td class="field">Email</td> 		<td class="value">@Model.User.Email</td></tr>
+				<tr><td class="field">Contact No.</td> 	<td class="value">@Model.User.ContactNumber</td></tr>
+			</table>
+			
+		</div>
+

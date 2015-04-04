@@ -24,6 +24,11 @@ namespace CarShare.Domain.Entities
 
         public int MakeID { get; set; }
 
+        [NotMapped]
+        public string Make { get; set; }
+        [NotMapped]
+        public string Model { get; set; }
+
         public int ModelID { get; set; }
 
         //attrs
@@ -41,6 +46,7 @@ namespace CarShare.Domain.Entities
 
         public int MaxCapacity { get; set; }
 
+        public string RegNo { get; set; }
 
 
         [NotMapped]
@@ -54,8 +60,5 @@ namespace CarShare.Domain.Entities
         {
             
         }
-
-        public Car() { }
-
     }
 }

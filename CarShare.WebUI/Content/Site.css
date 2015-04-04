@@ -6,7 +6,7 @@
     font-family: "Helvetica Neue", Helvetica, Tahoma, sans-serif;
     background: white;
     /*background: #E3E6EC;*/
-    
+
 }
 
 p {
@@ -32,19 +32,20 @@ header{
     /*height:50px;*/
 }
 .logo {
-    
+
     width: 400px;
 }
 .logo img{
   opacity: 1.0;
   filter: alpha(opacity=100);
-   
+
 }
 .logo img:hover{
   opacity: 0.4;
-  filter: alpha(opacity=40); 
-   
+  filter: alpha(opacity=40);
+
 }
+
 
 #nav-box{
     margin: 4px;
@@ -52,7 +53,7 @@ header{
 }
 ul#main-nav {
     list-style-type: none;
-    
+
 }
 
 ul#main-nav li {
@@ -63,15 +64,23 @@ ul#main-nav li a{
     text-decoration: none;
     display: inline-block;
     background: #6495ED;
-    padding: 4px;
     text-align: center;
     width: 90px;
     height: 30px;
-    padding: 4px;
+    padding: 6px 4px 0 4px;
     margin-left: 6px;
+	font-size: 14px;
+	border-bottom: 2px solid #4585f2;
+	border-right: 2px solid #4585f2;
+}
+
+ul#main-nav a:hover
+{
+	border-bottom: 2px solid #ffff00;
+	border-right: 2px solid #ffff00;
 }
 #nav-box {
-    
+
     width: 600px;
     margin: 4px 0 4px 100px;
 }
@@ -79,9 +88,9 @@ ul#main-nav li a{
 
 #site-content-area
 {
-    min-height: 500px;
+    min-height: 800px;
     background : white;
-    
+
 }
 
 
@@ -90,7 +99,7 @@ h4.about-heading
     font-family: 'Yanone Kaffeesatz', sans-serif;
     font-size: 28px;
     padding: 5px 8px;
-    
+
 }
 
 p.intro-para{
@@ -120,7 +129,7 @@ p.intro-para{
 }
 
     .sign-up-box input[type=text], .sign-up-box input[type=password] {
-        
+
           font-size:20px;
             /*height:50px;*/
             left:0;
@@ -135,7 +144,7 @@ p.intro-para{
     height: 300px;
     width: 500px;
     margin: 20px auto;
-    
+
 }
 
 
@@ -258,7 +267,7 @@ h1,h2,h3,h4,h5{
 }
 
 #box{
-/*    width:500px;    
+/*    width:500px;
     height:430px;*/
     background:#f3f6ff;
     border-radius:20px;
@@ -268,7 +277,7 @@ h1,h2,h3,h4,h5{
 #texta{
   font-size: 20px;
   left:0;
-  
+
   padding:8px 8px 7px;
   top:0;
 }
@@ -282,7 +291,7 @@ footer{
 
 /* test Styles */
 
-.blackBorder1px {
+/*.blackBorder1px {
     border : 1px solid black !important;
 }
 
@@ -290,6 +299,10 @@ footer{
 .redBorder1px {
     border : 1px solid red !important;
 }
+
+.greenBorder1px {
+    border : 1px solid green !important;
+}*/
 
 .clear-both {
     clear: both;
@@ -304,9 +317,168 @@ footer{
 }
 
 .margin10px {
-    
+
     margin: 10px;
 }
+
+/* details page styles */
+
+#show-case
+{
+	width: 620px;
+	margin-top: 20px;
+}
+
+	#show-case .car-image {
+		width: 600px;
+		height: 475px;
+		padding: 5px;
+	}
+
+	.car-title
+	{
+		font-family  : 'Yanone Kaffeesatz';
+		font-size: 32px;
+		margin: 10px 5px;
+	}
+
+	.desc-text
+	{
+		text-align: justify;
+		padding: 10px;
+	}
+
+#vehicle-info-box {}
+
+.right-box
+{
+	width: 310px;
+	height: 350px;
+	margin-top: 20px;
+	background: #f7f7f7;
+	color: #222;
+	border-left: 5px solid #f2f2f2;
+	border-top-left-radius: 20px;
+}
+
+#owner-info-box {}
+
+.right-box table {
+	padding: 4px;
+	margin: 5px 0 5px 15px;
+
+}
+.right-box td {
+	border-bottom: 1px solid #e1e1e1;
+	padding: 6px 4px;
+}
+
+.right-box td.field {
+	font-weight: bold;
+	color: #222;
+	width: 90px;
+}
+
+.right-box td.value {
+	width: 120px;
+}
+
+.right-box p {
+
+	padding:10px;
+
+}
+
+h4 {
+	font-family  : 'Yanone Kaffeesatz';
+	font-size: 22px;
+	letter-spacing: 2px;
+	padding: 7px;
+	margin: 10px 5px;
+}
+
+/*search page styles */
+
+/*search form container box*/
+
+#search-form-box {
+
+  width : 300px;
+  background:#f7f7f7;
+  margin-top: 10px;
+  height: 600px;
+
+}
+
+  .form-box {
+
+  }
+
+  .map-box {
+
+  }
+
+  #map-view { }
+
+#search-results-box  {
+    width: 625px;
+    padding: 0 5px 0 5px;
+    margin-top: 10px;
+}
+
+  .result-listing {
+    height: 175px;
+    border-bottom: 1px solid #e1e1e1;
+    cursor: pointer;
+  }
+
+    .result-car-image {
+      padding: 15px 0 0 10px;
+
+    }
+
+      img.car-thumb {
+          width: 150px;
+          height: 120px;
+          box-shadow: 0px 0px 12px -4px rgba(0,0,0,0.98);
+      }
+
+    .result-info {
+      margin: 0 0 0 2px;
+      width: 450px;
+    }
+
+      h3.car-title { font-size: 24px; letter-spacing: 1px; }
+
+      p.desc-text-ext {
+        font-size: 13px;
+        margin: 3px 0 5px 5px;
+        }
+
+      a.details-btn {
+
+        display: inline-block;
+        text-align: center;
+        color: #fff;
+        padding: 10px 30px;
+        background: #4585f2;
+        font-size: 12px;
+        text-decoration : none;
+        font-weight : bold;
+        float: right;
+        border: 2px solid #6495ED;
+        margin : 0 10px 2px 0;
+        /*border-right: 2px solid #6495ED;
+        border-bottom: 2px solid #6495ED;
+        border-bottom-right-radius: 4px;
+        border-bottom-right-radius: 4px;*/
+      }
+
+      a.details-btn:hover {
+        color: #ffff00;
+      }
+
+
 
 /* Styles for validation helpers
 -----------------------------------------------------------*/
