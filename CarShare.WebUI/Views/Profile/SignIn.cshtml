@@ -1,0 +1,76 @@
+﻿@model CarShare.WebUI.Models.SignInViewModel
+
+@{
+    ViewBag.Title = "Sign In";
+}
+
+<div class="home-info-box float-left">
+        
+        <section id="about">
+        
+        <div id="box">
+            
+        <h4 class="about-heading">Offer car</h4>
+        <p class="intro-para">You can offer your car in few minutes. All you need is vehicle registration, the mileage and a photo of your car.
+            You can also hire a car according to your need.so,Creating account now?</p><br><br>
+    
+        <h4 class="about-heading">Hire a Van Near You</h4>
+        <p class="intro-para">CarShare has just what you need whether you need a van hire in Pakistan,Our vans are easy to load and easy to handle. Check out our rates and hire a van today.</p><br><br>
+
+        <h4 class="about-heading">Van Hire with Great Service</h4>
+
+        <p class="intro-para">Hire a van from CarShare and enjoy our personalized customer service.Try a small van when you need just a bit more capacity than a car.A large van hire is perfect for a special event or occasion when you have more to move.</p>
+
+        </div>
+  
+        </section>    
+        
+        </div>
+        
+        <div class="sign-up-box float-right">
+            
+            <h1>LOGIN</h1>
+            
+            <!--<form action="#" name="login">
+                
+                
+            <input class="txtBoxLarge margin10px" type="text" required name="uname" placeholder="Username" >
+            
+            <input class="txtBoxLarge margin10px" type="password" required name="upass" placeholder="Password">
+            
+            
+            <input class="signin-btn margin10px" type="submit" value="SIGN IN">-->
+
+             @Html.ValidationSummary()
+
+            @using( Html.BeginForm("SignIn","Profile") )
+            {
+               
+                
+                <p>@Html.ValidationMessageFor(x => x.Email)</p>
+                
+                @Html.EditorFor(x => x.Email)
+
+                <p>@Html.ValidationMessageFor(x => x.Password)</p>
+                
+                @Html.EditorFor(x => x.Password)
+
+                <input type="submit" class="signin-btn margin10px"/>
+
+            }
+
+            
+            
+            <p>Do not have an account?sign up now</p>
+            
+        </div>
+        
+        <div class="clear-both"></div>
+        
+            .
+    <div class="home-video blackBorder1px">
+        
+        
+        
+    </div>
+    
