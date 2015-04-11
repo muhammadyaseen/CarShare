@@ -4,6 +4,11 @@
     ViewBag.Title = Model.Car.Title + " details";
 }
 
+@section scripts {
+
+    //your js code here
+
+}
 <div id="show-case" class="float-left">
 		
 		<!-- vehicle title -->
@@ -45,5 +50,14 @@
 				<tr><td class="field">Contact No.</td> 	<td class="value">@Model.User.ContactNumber</td></tr>
 			</table>
 			
+            <form action="#">
+
+                <input type="hidden" name="ownerid" value="@Model.User.UserID"/>
+                <input type="hidden" name="requesterid" value="get from session"/>
+                <input type="hidden" name="carid" value="@Model.Car.CarID"/>
+
+            <input type="submit" value="Request Details" class="request-btn" />
+
+      </form>
 		</div>
 

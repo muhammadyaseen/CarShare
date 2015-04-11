@@ -32,7 +32,7 @@ namespace CarShare.Domain.Concrete
 
             SqlCommand cmd = new SqlCommand("Select	C.RegNo, C.MaxCapacity, C.CarID, C.Title, C.Location, C.Description,"
 		                                    + "CI.Image, U.Name,"
-                                            + "U.Email, U.ContactNo, U.Address,"
+                                            + "U.Email, U.ContactNo, U.Address, U.UserID, "
 		                                    + "Md.Model, Mk.Make"
                                             + " FROM Car C"
                                             + " JOIN CarImage CI ON CI.CarID = C.CarID"
@@ -82,6 +82,7 @@ namespace CarShare.Domain.Concrete
             u.Address = dr["Address"].ToString();
             u.ContactNumber = dr["ContactNo"].ToString();
             u.Email = dr["Email"].ToString();
+            u.UserID  = int.Parse(dr["UserID"].ToString());
 
             sqlConn.Close();
 
