@@ -1,0 +1,55 @@
+﻿@model CarShare.WebUI.Models.SearchForm
+
+<!-- search form container -->
+      <div id="search-form-box" class="blackBorder1px float-left">
+
+          <div class="form-box">
+
+            <h2 class="column-title"> Search </h2>
+
+            @using (Html.BeginForm("Search","Search"))
+            {
+    
+                  <div class="form-field">
+                    <label class="search-field-text"> Keywords </label><br />
+    
+                      @Html.TextBoxFor(m => m.Keyword, htmlAttributes: new { @class= "search-field-wgt" }) 
+    
+                  </div>
+    
+                  <div class="form-field">
+                    <label class="search-field-text"> Make </label><br />
+    
+                      @Html.DropDownListFor( m => m.SelectedMakeID, Model.Makes, "--Any Make--", new { @class = "search-field-wgt" })
+   
+                  </div>
+    
+                  <div class="form-field">
+                    <label class="search-field-text"> Model </label><br />
+    
+                       @Html.DropDownListFor( m => m.SelectedModelID, Model.Models, "--Any Model--", new { @class = "search-field-wgt" })
+    
+                  </div>
+    
+                  <div class="form-field">
+                    <label class="search-field-text"> City </label><br />
+    
+                      @Html.DropDownListFor( m => m.SelectedLocation, Model.Location, "--Any Location--", new { @class = "search-field-wgt" })
+    
+                  </div>
+    
+                  <div class="form-field">
+                    <input type="submit" value="Search" class="search-btn" />
+                  </div>
+    
+            }
+          </div>
+
+          <!-- for Aleesha's map work -->
+          <div class="map-box" id="map-view">
+
+
+          </div>
+
+      </div>
+
