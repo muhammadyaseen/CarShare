@@ -47,6 +47,8 @@
     <Compile Include="Concrete\SQLUserRepository.cs" />
     <Compile Include="Entities\Car.cs" />
     <Compile Include="Entities\CarImage.cs" />
+    <Compile Include="Entities\Make.cs" />
+    <Compile Include="Entities\Model.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewEntities\DetailsView.cs" />

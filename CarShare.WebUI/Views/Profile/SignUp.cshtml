@@ -31,29 +31,7 @@
             
         <h1>SIGN UP</h1>
         
-         <!--<form action="#" name="signup">
-                
-            <input class="txtBoxLarge" type="text" required name="sname" placeholder="Username" >
-            <br>
-            <br>
-
-            <input class="txtBoxLarge" type="password" name="spass" placeholder="Password"><br><br>
-
-            <input class="txtBoxLarge" type="text" required name="spass" placeholder="Email"><br><br>
-
-            <input class="txtBoxLarge" type="text" required name="snic" placeholder="NIC"><br><br>
-
-            <input class="txtBoxLarge" type="number" required name="sage" placeholder="Age"><br><br>
-
-            <input class="txtBoxLarge" type="password" required name="scon" placeholder="Contact no"><br><br>
-
-            <input class="txtBoxLarge" type="password" required name="sres" placeholder="Residance"><br><br>
-
-            <textarea id="texta" required name="sdesc"  cols="27" rows="6" placeholder="Personal Description" ></textarea>
-            
-        </form>-->
-
-            
+                    
             @using (Html.BeginForm("SignUp","Profile", FormMethod.Post, new { enctype = "multipart/form-data" }))
             {
                 @Html.ValidationMessageFor(x => x.Name)

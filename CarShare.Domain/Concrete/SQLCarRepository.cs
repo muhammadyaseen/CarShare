@@ -124,5 +124,46 @@ namespace CarShare.Domain.Concrete
             return list;
         }
 
+        public IEnumerable<Make> GetAllMakes()
+        {
+            List<Make> list = new List<Make>();
+
+            sqlConn.Open();
+
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Make", sqlConn);
+
+            using (SqlDataReader dr = cmd.ExecuteReader())
+            {
+                while (dr.Read())
+                {
+                    list.Add(new Make(int.Parse(dr["MakeID"].ToString()), dr["Make"].ToString()));
+                }
+            }
+
+            sqlConn.Close();
+
+            return list;
+        }
+
+        public IEnumerable<Model> GetAllModels()
+        {
+            List<Model> list = new List<Model>();
+
+            sqlConn.Open();
+
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Model", sqlConn);
+
+            using (SqlDataReader dr = cmd.ExecuteReader())
+            {
+                while (dr.Read())
+                {
+                    list.Add(new Model(int.Parse(dr["ModelID"].ToString()), dr["Model"].ToString()));
+                }
+            }
+
+            sqlConn.Close();
+
+            return list;
+        }
     }
 }

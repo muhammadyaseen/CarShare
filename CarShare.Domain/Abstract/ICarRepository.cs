@@ -16,5 +16,9 @@ namespace CarShare.Domain.Abstract
 
         DetailsView GetCarAndAssociatedDetails(int carID);
 
+        IEnumerable<Make> GetAllMakes();
+
+        IEnumerable<Model> GetAllModels();
+
     }
 }

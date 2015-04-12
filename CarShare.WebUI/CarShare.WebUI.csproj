@@ -133,6 +133,7 @@
     </Compile>
     <Compile Include="Infrastructure\NinjectControllerFactory.cs" />
     <Compile Include="Infrastructure\UserMembership.cs" />
+    <Compile Include="Models\SearchForm.cs" />
     <Compile Include="Models\SignInViewModel.cs" />
     <Compile Include="Models\UserSessionData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -227,6 +228,8 @@
     <Content Include="Views\Profile\SignIn.cshtml" />
     <Content Include="Views\Profile\Home.cshtml" />
     <Content Include="Views\Search\Details.cshtml" />
+    <Content Include="Views\Search\RenderSearchForm.cshtml" />
+    <Content Include="Views\Search\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
