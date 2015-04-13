@@ -63,30 +63,10 @@ namespace CarShare.Domain.Concrete
 
         public DetailsView ConstructStitchedResult(SqlDataReader dr, bool keepOpen = false, bool getImages = true )
         {
-            //todo : refactor
 
             Car c = GetCarFromReader(dr);
-                
-            //    new Car();
-
-            //c.CarID = int.Parse(dr["CarID"].ToString());
-            //c.CarDesc = dr["Description"].ToString();
-            //c.Make = dr["Make"].ToString();
-            //c.Model = dr["Model"].ToString();
-            //c.Location = dr["Location"].ToString();
-            //c.RegNo = dr["RegNo"].ToString();
-            //c.MaxCapacity = int.Parse(dr["MaxCapacity"].ToString());
-            //c.Title = dr["Title"].ToString();
 
             User u = GetUserFromReader(dr);
-                
-            //    new User();
-
-            //u.Name = dr["Name"].ToString();
-            //u.Address = dr["Address"].ToString();
-            //u.ContactNumber = dr["ContactNo"].ToString();
-            //u.Email = dr["Email"].ToString();
-            //u.UserID  = int.Parse(dr["UserID"].ToString());
 
             if ( ! keepOpen ) sqlConn.Close();
 
@@ -225,14 +205,19 @@ namespace CarShare.Domain.Concrete
                 {
                     results.Add( ConstructStitchedResult(dr, true, false) );
                 }
-
-
-                //all the data from car,user has been fetched.. we should now fetch CarImages
-
-                sqlConn.Close();
-
-                return results;
             }
+
+            //all the data from car,user has been fetched.. and reader has been closed ..we should now fetch CarImages
+
+            foreach (DetailsView d in results)
+            {
+                d.Car.CarImageList = GetCarImagesFor(d.Car.CarID);
+            }
+
+            sqlConn.Close();
+
+            return results;
+
             
         }
 

@@ -4,6 +4,42 @@
     ViewBag.Title = "Index";
 }
 
+@section scripts {
+
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+
+            $('.result-listing').hover(
+
+              //handler in
+              function () {
+
+
+                  $(this).animate({
+
+                      backgroundColor: '#e1e1e1'
+                  }, 500);
+
+              },
+
+              //handler out
+
+              function () {
+                  $(this).animate({
+
+                      backgroundColor: '#fff'
+                  }, 500);
+
+              }
+            );
+
+        });
+
+    </script>
+    
+}
+
     @Html.Action("RenderSearchForm")
 
   <!-- search results view -->
@@ -22,7 +58,17 @@
                   <div class="result-listing redBorder1px">
                       
                         <div class="result-car-image greenBorder1px float-left">
-                          <img src="images/a1.jpg" alt="Car title" class="car-thumb" />
+
+                            @if ( d.Car.CarImageList.Count() > 0 )
+                            {
+                                <img src="/@Url.Content(d.Car.CarImageList.First().Image)" alt="Car title" class="car-thumb" />
+                                
+                            }
+                            else 
+                            {
+                                <img src="@Url.Content("/Uploads/CarImages/default.png")" alt="Car title" class="car-thumb" />
+                            }  
+
                         </div>
                 
                         <div class="result-info greenBorder1px float-right">

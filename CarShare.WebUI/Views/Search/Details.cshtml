@@ -6,7 +6,7 @@
 
 @section scripts {
 
-    //your js code here
+    
 
 }
 <div id="show-case" class="float-left">
@@ -16,9 +16,15 @@
 		<h2 class="car-title">@Model.Car.Title</h2>
 		
 		<!-- image show case -->
-		
-		<img src="/@Url.Content(Model.Car.CarImageList.First().Image)" class="car-image" alt="Car Image" />
-		
+		@if ( Model.Car.CarImageList.Count() > 0 )
+        {
+	    	<img src="/@Url.Content(Model.Car.CarImageList.First().Image)" class="car-image" alt="Car Image" />
+        }
+        else
+        {
+            <img src="@Url.Content("/Uploads/CarImages/default.png")" class="car-image" alt="Car Image" />
+           
+        }
 		<!-- car description -->
 		
 		<h4>Car Description</h4>
