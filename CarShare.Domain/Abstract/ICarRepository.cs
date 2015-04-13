@@ -20,5 +20,6 @@ namespace CarShare.Domain.Abstract
 
         IEnumerable<Model> GetAllModels();
 
+        IEnumerable<DetailsView> GetSearchResults(string kword, int model, int make, string location);
     }
 }

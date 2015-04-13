@@ -1,103 +1,48 @@
-﻿@{
+﻿@model IEnumerable<CarShare.Domain.ViewEntities.DetailsView>
+
+@{
     ViewBag.Title = "Index";
 }
 
     @Html.Action("RenderSearchForm")
 
   <!-- search results view -->
-
+      
       <div id="search-results-box" class="redBorder1px float-right">
 
-        <div class="result-listing redBorder1px">
-
-          <div class="result-car-image greenBorder1px float-left">
-            <img src="images/a1.jpg" alt="Car title" class="car-thumb" />
-          </div>
-
-          <div class="result-info greenBorder1px float-right">
-            <h3 class="car-title">Honda Accord Classic Model</h3>
-            <p class="desc-text-ext">
-              Spim implements almost the entire MIPS32
-              assembler-extended instruction set. (It omits most
-              floating point comparisons and rounding modes and the
-              memory system page tables.) The MIPS architecture has
-              several variants that...
-            </p>
-
-            <p><b>Owner:</b> Tony Stark <b>Location:</b> Karachi </p>
-
-            <a href="details.html?id=1" target="_blank" class="details-btn">View Details</a>
-          </div>
-
-        </div>
-
-        <div class="result-listing redBorder1px">
-
-          <div class="result-car-image greenBorder1px float-left">
-            <img src="images/c1.jpg" alt="Car title" class="car-thumb" />
-          </div>
-
-          <div class="result-info greenBorder1px float-right">
-            <h3 class="car-title">Alto Golden good conidition</h3>
-            <p class="desc-text-ext">
-              Spim implements almost the entire MIPS32
-              assembler-extended instruction set. (It omits most
-              floating point comparisons and rounding modes and the
-              memory system page tables.) The MIPS architecture has
-              several variants that...</p>
-
-              <p><b>Owner:</b> Bruce Stark <b>Location:</b> Gotham </p>
-
-            <a href="details.html?id=1" target="_blank" class="details-btn">View Details</a>
-          </div>
-
-        </div>
-
-        <div class="result-listing redBorder1px">
-
-          <div class="result-car-image greenBorder1px float-left">
-            <img src="images/c2.jpg" alt="Car title" class="car-thumb" />
-          </div>
-
-          <div class="result-info greenBorder1px float-right">
-            <h3 class="car-title">Honda Model Accord</h3>
-            <p class="desc-text-ext">
-              Spim implements almost the entire MIPS32
-              assembler-extended instruction set. (It omits most
-              floating point comparisons and rounding modes and the
-              memory system page tables.) The MIPS architecture has
-              several variants that...</p>
-
-              <p><b>Owner:</b> Barry Allen <b>Location:</b> Cental City </p>
-
-            <a href="details.html?id=1" target="_blank" class="details-btn">View Details</a>
-          </div>
-
-        </div>
-
-        <div class="result-listing redBorder1px">
-
-          <div class="result-car-image greenBorder1px float-left">
-            <img src="images/a3.jpg" alt="Car title" class="car-thumb" />
-          </div>
-
-          <div class="result-info greenBorder1px float-right">
-            <h3 class="car-title">Alto Gray Barely driven</h3>
-            <p class="desc-text-ext">
-              Spim implements almost the entire MIPS32
-              assembler-extended instruction set. (It omits most
-              floating point comparisons and rounding modes and the
-              memory system page tables.) The MIPS architecture has
-              several variants that...</p>
-
-              <p><b>Owner:</b> Oliver Queen <b>Location:</b> Starling </p>
-
-            <a href="details.html?id=1" target="_blank" class="details-btn">View Details</a>
-          </div>
-
-        </div>
-
-
-
+        @if (Model != null)
+        { 
+        
+            if( Model.Count() > 0 )
+            {
+                
+                foreach (var d in Model)
+                {
+                    
+                  <div class="result-listing redBorder1px">
+                      
+                        <div class="result-car-image greenBorder1px float-left">
+                          <img src="images/a1.jpg" alt="Car title" class="car-thumb" />
+                        </div>
+                
+                        <div class="result-info greenBorder1px float-right">
+                          <h3 class="car-title">@d.Car.Title</h3>
+                          <p class="desc-text-ext">
+                            @d.Car.CarDesc
+                          </p>
+                
+                          <p><b>Owner:</b> @d.User.Name <b> Location:</b> @d.Car.Location </p>
+                
+                          <a href="@Url.Action("Details","Search", new { id = d.Car.CarID})" target="_blank" class="details-btn">View Details</a>
+                        </div>
+                
+                </div>
+                    
+                }
+                
+            }
+            
+        }
+        
       </div>
 

@@ -24,7 +24,20 @@ namespace CarShare.WebUI.Controllers
         public ActionResult Index()
         {
 
-            return View();
+            return View("Index", null);
+        }
+
+        [HttpPost]
+        public ActionResult Search(SearchForm form)
+        {
+            IEnumerable<DetailsView> results = carRepo.GetSearchResults(
+                form.Keyword, 
+                form.SelectedModelID,
+                form.SelectedMakeID,
+                form.SelectedLocation
+            );
+            
+            return View("Index", results);
         }
 
         public ActionResult Details(int id)

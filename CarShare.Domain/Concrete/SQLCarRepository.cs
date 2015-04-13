@@ -31,11 +31,11 @@ namespace CarShare.Domain.Concrete
             sqlConn.Open();
 
             SqlCommand cmd = new SqlCommand("Select	C.RegNo, C.MaxCapacity, C.CarID, C.Title, C.Location, C.Description,"
-		                                    + "CI.Image, U.Name,"
-                                            + "U.Email, U.ContactNo, U.Address, U.UserID, "
-		                                    + "Md.Model, Mk.Make"
+		                                    //+ "CI.Image, "
+                                            + " U.Name, U.Email, U.ContactNo, U.Address, U.UserID, "
+		                                    + " Md.Model, Mk.Make"
                                             + " FROM Car C"
-                                            + " JOIN CarImage CI ON CI.CarID = C.CarID"
+                                            //+ " JOIN CarImage CI ON CI.CarID = C.CarID"
                                             + " JOIN [User] U ON C.OwnerID = U.UserID"
                                             + " JOIN Make Mk ON Mk.MakeID = C.MakeID"
                                             + " JOIN Model Md ON Md.ModelID = C.ModelID"
@@ -61,32 +61,36 @@ namespace CarShare.Domain.Concrete
             }
         }
 
-        public DetailsView ConstructStitchedResult(SqlDataReader dr)
+        public DetailsView ConstructStitchedResult(SqlDataReader dr, bool keepOpen = false, bool getImages = true )
         {
             //todo : refactor
 
-            Car c = new Car();
+            Car c = GetCarFromReader(dr);
+                
+            //    new Car();
 
-            c.CarID = int.Parse(dr["CarID"].ToString());
-            c.CarDesc = dr["Description"].ToString();
-            c.Make = dr["Make"].ToString();
-            c.Model = dr["Model"].ToString();
-            c.Location = dr["Location"].ToString();
-            c.RegNo = dr["RegNo"].ToString();
-            c.MaxCapacity = int.Parse(dr["MaxCapacity"].ToString());
-            c.Title = dr["Title"].ToString();
+            //c.CarID = int.Parse(dr["CarID"].ToString());
+            //c.CarDesc = dr["Description"].ToString();
+            //c.Make = dr["Make"].ToString();
+            //c.Model = dr["Model"].ToString();
+            //c.Location = dr["Location"].ToString();
+            //c.RegNo = dr["RegNo"].ToString();
+            //c.MaxCapacity = int.Parse(dr["MaxCapacity"].ToString());
+            //c.Title = dr["Title"].ToString();
 
-            User u = new User();
+            User u = GetUserFromReader(dr);
+                
+            //    new User();
 
-            u.Name = dr["Name"].ToString();
-            u.Address = dr["Address"].ToString();
-            u.ContactNumber = dr["ContactNo"].ToString();
-            u.Email = dr["Email"].ToString();
-            u.UserID  = int.Parse(dr["UserID"].ToString());
+            //u.Name = dr["Name"].ToString();
+            //u.Address = dr["Address"].ToString();
+            //u.ContactNumber = dr["ContactNo"].ToString();
+            //u.Email = dr["Email"].ToString();
+            //u.UserID  = int.Parse(dr["UserID"].ToString());
 
-            sqlConn.Close();
+            if ( ! keepOpen ) sqlConn.Close();
 
-            c.CarImageList = GetCarImagesFor(c.CarID);
+            if ( getImages )  c.CarImageList = GetCarImagesFor(c.CarID);
 
             return new DetailsView { Car = c, User = u };
 
@@ -103,7 +107,7 @@ namespace CarShare.Domain.Concrete
             
             //todo : implement sql code
 
-            sqlConn.Open();
+            if ( sqlConn.State == ConnectionState.Closed) sqlConn.Open();
 
             SqlCommand cmd = new SqlCommand("SELECT * FROM CarImage WHERE CarID = @carid", sqlConn);
 
@@ -164,6 +168,102 @@ namespace CarShare.Domain.Concrete
             sqlConn.Close();
 
             return list;
+        }
+
+
+        public IEnumerable<DetailsView> GetSearchResults(string kword, int model, int make, string location)
+        {
+            sqlConn.Open();
+
+            List<DetailsView> results = new List<DetailsView>();
+
+            string condition = " ";
+            
+            condition += make != 0 ? " Mk.MakeID = @mk AND ": "";
+
+            condition += model != 0 ? " Md.ModelID = @md AND ": "";
+
+            condition += location != null ? " C.Location = @loc AND " : "";
+
+            condition += " 1=1 ";
+
+            SqlCommand cmd = new SqlCommand("Select DISTINCT C.RegNo, C.MaxCapacity, C.CarID, C.Title, C.Location, C.Description,"
+                                            //+ " CI.Image, "
+                                            + " U.Name, U.Email, U.ContactNo, U.Address, U.UserID, "
+                                            + " Md.Model, Mk.Make"
+                                            + " FROM Car C"
+                                            //+ " JOIN CarImage CI ON CI.CarID = C.CarID"
+                                            + " JOIN [User] U ON C.OwnerID = U.UserID"
+                                            + " JOIN Make Mk ON Mk.MakeID = C.MakeID"
+                                            + " JOIN Model Md ON Md.ModelID = C.ModelID"
+                                            + " WHERE " + condition , sqlConn);
+
+            if (make != 0)
+            {
+                SqlParameter makeParam = new SqlParameter("mk", SqlDbType.Int);
+                makeParam.Value = make;
+                cmd.Parameters.Add(makeParam);
+            }
+
+            if (model != 0)
+            {
+                SqlParameter modeParam = new SqlParameter("md", SqlDbType.Int);
+                modeParam.Value = model;
+                cmd.Parameters.Add(modeParam);
+            }
+
+            if (location != null)
+            {
+                SqlParameter locParam = new SqlParameter("loc", SqlDbType.Int);
+                locParam.Value = make;
+                cmd.Parameters.Add(locParam);
+            }
+
+            using (SqlDataReader dr = cmd.ExecuteReader())
+            {
+                while (dr.Read())
+                {
+                    results.Add( ConstructStitchedResult(dr, true, false) );
+                }
+
+
+                //all the data from car,user has been fetched.. we should now fetch CarImages
+
+                sqlConn.Close();
+
+                return results;
+            }
+            
+        }
+
+        public Car GetCarFromReader(SqlDataReader dr)
+        {
+            Car c = new Car();
+
+            c.CarID = int.Parse(dr["CarID"].ToString());
+            c.CarDesc = dr["Description"].ToString();
+            c.Make = dr["Make"].ToString();
+            c.Model = dr["Model"].ToString();
+            c.Location = dr["Location"].ToString();
+            c.RegNo = dr["RegNo"].ToString();
+            c.MaxCapacity = int.Parse(dr["MaxCapacity"].ToString());
+            c.Title = dr["Title"].ToString();
+
+            return c;
+        }
+
+        public User GetUserFromReader(SqlDataReader dr)
+        {
+            User u = new User();
+
+            u.Name = dr["Name"].ToString();
+            u.Address = dr["Address"].ToString();
+            u.ContactNumber = dr["ContactNo"].ToString();
+            u.Email = dr["Email"].ToString();
+            u.UserID = int.Parse(dr["UserID"].ToString());
+
+            return u;
+
         }
     }
 }
