@@ -40,10 +40,29 @@ namespace CarShare.WebUI.Controllers
             return View("Index", results);
         }
 
+        [Authorize]
         public ActionResult Details(int id)
         {
-            //Car car = carRepo.GetCarByID(carID);
-            return View(carRepo.GetCarAndAssociatedDetails(id));
+            ViewBag.LoggedInID = ((UserSessionData)Session["UserData"]).UserID;
+            DetailsView dv = carRepo.GetCarAndAssociatedDetails(id);
+            dv.DetailsRequested = false;
+
+            return View(dv);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public ActionResult ReqDetails(RequestForm form)
+        {
+            ViewBag.LoggedInID = ((UserSessionData)Session["UserData"]).UserID;
+            DetailsView dv = carRepo.GetCarAndAssociatedDetails(form.CarID);
+            
+
+            // Add your code here
+            
+            dv.DetailsRequested = true;
+
+            return View("Details" , dv);
         }
 
         [ChildActionOnly]

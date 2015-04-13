@@ -52,18 +52,25 @@
 			
 			<table>
 				<tr><td class="field">Name</td> 		<td class="value">@Model.User.Name</td></tr>
-				<tr><td class="field">Email</td> 		<td class="value">@Model.User.Email</td></tr>
-				<tr><td class="field">Contact No.</td> 	<td class="value">@Model.User.ContactNumber</td></tr>
+
+                @if ( Model.DetailsRequested ) 
+                {
+				    <tr><td class="field">Email</td> 		<td class="value">@Model.User.Email</td></tr>
+				    <tr><td class="field">Contact No.</td> 	<td class="value">@Model.User.ContactNumber</td></tr>
+                }
+
 			</table>
 			
-            <form action="#">
+            @if ( ! Model.DetailsRequested )
+            {
+                <form action="@Url.Action("ReqDetails")" method="post">
 
-                <input type="hidden" name="ownerid" value="@Model.User.UserID"/>
-                <input type="hidden" name="requesterid" value="get from session"/>
-                <input type="hidden" name="carid" value="@Model.Car.CarID"/>
+                    <input type="hidden" name="OwnerID" value="@Model.User.UserID"/>
+                    <input type="hidden" name="RequesterID" value="@ViewBag.LoggedInID"/>
+                    <input type="hidden" name="CarID" value="@Model.Car.CarID"/>
 
-            <input type="submit" value="Request Details" class="request-btn" />
-
-      </form>
+                    <input type="submit" value="Request Details" class="request-btn" />
+                </form>
+            }
 		</div>
 
