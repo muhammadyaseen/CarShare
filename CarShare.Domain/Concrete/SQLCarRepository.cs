@@ -165,6 +165,8 @@ namespace CarShare.Domain.Concrete
 
             condition += location != null ? " C.Location = @loc AND " : "";
 
+            condition += kword != null ? " LOWER(C.Title) LIKE LOWER(@title) AND ": "";
+
             condition += " 1=1 ";
 
             SqlCommand cmd = new SqlCommand("Select DISTINCT C.RegNo, C.MaxCapacity, C.CarID, C.Title, C.Location, C.Description,"
@@ -194,9 +196,16 @@ namespace CarShare.Domain.Concrete
 
             if (location != null)
             {
-                SqlParameter locParam = new SqlParameter("loc", SqlDbType.Int);
-                locParam.Value = make;
+                SqlParameter locParam = new SqlParameter("loc", SqlDbType.NVarChar);
+                locParam.Value = location;
                 cmd.Parameters.Add(locParam);
+            }
+
+            if (kword != null)
+            {
+                SqlParameter kwParam = new SqlParameter("title", SqlDbType.NVarChar);
+                kwParam.Value = "%" + kword + "%";
+                cmd.Parameters.Add(kwParam);
             }
 
             using (SqlDataReader dr = cmd.ExecuteReader())
