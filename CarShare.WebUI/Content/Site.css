@@ -28,7 +28,7 @@ header{
     width:100%;
     min-width: 1024px;
     margin:0; padding:0;
-    background-color:#4585f2;
+    background-color:#003366;
     /*height:50px;*/
 }
 .logo {
@@ -45,7 +45,6 @@ header{
   filter: alpha(opacity=40);
 
 }
-
 
 #nav-box{
     margin: 4px;
@@ -100,6 +99,7 @@ h4.about-heading
     font-size: 28px;
     padding: 5px 8px;
 
+
 }
 
 p.intro-para{
@@ -107,6 +107,8 @@ p.intro-para{
   text-align: justify;
     color:black;
     padding: 10px;
+   font-family: 'Yanone Kaffeesatz', sans-serif;
+
 
 }
 .home-info-box
@@ -126,6 +128,8 @@ p.intro-para{
     min-width: 200px;
     /*background: yellow;*/
     margin: 10px 10px 10px 0;
+    position: absolute;
+    z-index: 1;
 }
 
     .sign-up-box input[type=text], .sign-up-box input[type=password] {
@@ -151,7 +155,7 @@ p.intro-para{
 a {
     /*display:inline;*/
     /*width: 90px;*/
-    color:white;
+    color:black;
     /*margin-left: 20px;*/
 
 }
@@ -288,6 +292,13 @@ footer{
   margin-top: 25px;
   height:90px;
 }
+footer{
+  background-color: lightgray;
+  width:100%; margin:0; padding:0;
+  min-width: 1024px;
+  margin-top: 25px;
+  height:90px;
+}
 
 /* test Styles */
 
@@ -320,6 +331,100 @@ footer{
 
     margin: 10px;
 }
+
+/*profile page style*/
+
+
+
+#car-links{
+background-color: #E2A76F;
+width:300px;
+height:120px;
+margin-top: -350px;
+margin-right:800px;
+}
+#directions{
+background-color: white;
+width:600px;
+height:600px;
+margin-left:100px;
+margin-top: -200px;
+}
+#directions th,td{
+  font-family  : "Open Sans", sans-serif;
+ text-align: justify;
+   letter-spacing: 2px;
+  padding: 7px;
+  margin: 10px 5px;
+  font-style: normal;
+  line-height: 1;
+  position: relative;
+  cursor: default;
+}
+#p-d{
+
+  font-family: times new roman;
+  font-size: 15px;
+  margin-top: -50px;
+  margin-left: 50px;
+  margin: 0 auto;
+
+}
+#panel, #flip {
+    padding: 5px;
+    text-align: center;
+    background-color: #FAEBD7;
+    border: solid 1px #c3c3c3;
+    cursor: pointer;;
+}
+
+#panel {
+    padding: 0px;
+    text-align: justify;
+    font-size: 13px;
+    display: none;
+    cursor: pointer;
+}
+#dipic{
+
+width:50px;
+height:50px;
+margin-right:20px;
+
+}
+#addcar{
+
+
+  background-color: #E2A76F;
+  width:400px;
+  height: 500px;
+  padding: 20px;
+margin-left: 450px;
+}
+#bg{
+  background: url('images/bg.jpg');
+  width: 1400px;
+  height: 600px;
+  display: inline-block;
+  position:absolute;
+  z-index:1;
+}
+#home-p1 {
+    width: 300px;
+    height: 180px;
+    background-color: lightgray;
+    position: absolute;
+    z-index: 1;
+
+    -webkit-animation-name: example;
+    -webkit-animation-duration: 4s;
+    -webkit-animation-iteration-count: infinite;
+    animation-name: example;
+    animation-duration: 4s;
+    animation-iteration-count: 3;
+
+}
+
 
 /* details page styles */
 

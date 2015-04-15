@@ -130,7 +130,10 @@ namespace CarShare.WebUI.Controllers
         public ActionResult Home()
         {
             UserSessionData loggedInUser = (UserSessionData)System.Web.HttpContext.Current.Session["UserData"];
-            return View(loggedInUser);
+
+            User u = userRepo.GetUserByID(((UserSessionData)System.Web.HttpContext.Current.Session["UserData"]).UserID);
+
+            return View(u); 
             
         }
 

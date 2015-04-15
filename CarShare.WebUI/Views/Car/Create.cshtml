@@ -1,0 +1,35 @@
+﻿@model CarShare.Domain.Entities.Car
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+<div id="addcar" class="float-left">
+    <h4>Add car
+    </h4>
+    <hr />
+   
+
+    @using (Html.BeginForm("Create", "Car", FormMethod.Post))
+    {
+       
+        @Html.ValidationMessageFor(x => x.Title)
+        @Html.TextBoxFor(x => x.Title, new { @placeholder = "Title" }) <br />
+                      
+        @Html.ValidationMessageFor(model => model.MaxCapacity)
+        @Html.TextBoxFor(model => model.MaxCapacity, new { @placeholder = "Capacity" }) <br />
+        @Html.ValidationMessageFor(model => model.MakeID)
+        @Html.TextBoxFor(model => model.MakeID, new { @placeholder = "MakeID" }) <br />
+        @Html.ValidationMessageFor(model => model.Location)
+        @Html.TextBoxFor(model => model.Location, new { @placeholder = "Location" }) <br />
+        @Html.ValidationMessageFor(model => model.RegNo)
+        @Html.TextBoxFor(model => model.RegNo, new { @placeholder = "Registration numebr" }) <br />
+        @Html.ValidationMessageFor(model => model.CarDesc)
+        @Html.TextBoxFor(model => model.CarDesc, new { @placeholder = "Description" }) <br />
+        <input type="submit" value="Submit"/>
+                        
+    }
+
+
+
+</div>

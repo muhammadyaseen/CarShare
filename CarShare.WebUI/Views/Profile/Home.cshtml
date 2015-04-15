@@ -1,7 +1,109 @@
-﻿@model CarShare.WebUI.Models.UserSessionData
+﻿@model CarShare.Domain.Entities.User
 
 @{
     ViewBag.Title = "Home";
 }
 
-<h2> Hello! @Model.Name , welcome Home </h2>
+
+<h2>Index</h2>
+
+
+@section scripts{
+    <script>
+$(document).ready(function () {
+    $("#flip").click(function () {
+        $("#panel").slideToggle("slow");
+    });
+});
+</script>
+
+}
+
+		<div id="show-case" class="float-left">
+		
+		<!-- vehicle title -->
+		
+		<h1 class="car-title">@Model.Name</h1> 
+		<!-- image show case -->
+		
+		<img src="@Url.Content("~/Content/Images/Client1.jpg")" width="200px" height="200px"/>
+		
+		<!-- car description -->
+		
+		
+		</div>
+
+<div id="directions" class="float-right right-box">
+<table>
+<h4><center>how it works?</center></h4>
+	<tr>
+	<th><img src="@Url.Content("~/Content/Images/p1.png")" id="dipic">1. Find Matching Car</th>
+	</tr>
+	<tr>
+	
+	<td><p id="p-d">City car complacent? Or would you prefer a travel / Umzugsbus? Choose between 4500 cars and fancy car owners for an offer.</p></td>
+	</tr>
+	<tr>
+	<th><img src="@Url.Content("~/Content/Images/l.jpg")" id="dipic">2. Safe payment</th>
+	</tr>
+	<tr>
+
+
+	<td><p id="p-d">pay for car directly to the owner,no online transfer money.</p></td>
+	</tr>
+	<tr>
+	<th><img src="@Url.Content("~/Content/Images/d.png")" id="dipic">3. Drive insurance</th>
+	</tr>
+	
+
+	<tr>
+	<td><p id="p-d">Meet the car owner at the agreed place and complete the transfer protocol. Then is insurance protection is active and ready to go - enjoy!</p></td>
+	</tr>
+	<tr>
+	<th><img src="@Url.Content("~/Content/Images/rate.jpg")" id="dipic">4. Rate</th>
+	</tr>
+	<tr>
+	
+	<td><p id="p-d">
+If everything went well? After returning to the agreed location you can you evaluate each other, thus improving the platform even further. On to the next rental!</p></td>
+	</tr>
+
+</table>
+</div>
+
+
+
+
+
+		<div id="car-links" class="float-left right-box">
+						
+			<table>
+				<tr><td class="field"> @Html.ActionLink("Add Car", "Create","Car")</td> 		
+				<tr><td class="field"> @Html.ActionLink("Edit Car", "Edit", "Car")</td> 
+                    <tr><td class="field"> @Html.ActionLink("Details", "Delete", "Car")</td> 
+                        
+										
+			</table>
+				<div id="flip">View your details</div>
+<div id="panel" class="">
+   <table>
+        
+       <tr><td class="field">Email</td>  <td class="value"> @Model.Email  </td></tr> 
+         
+				@*<tr><td class="field"> @Html.DisplayNameFor(model => model.Age)</td>		<td class="value">20</td></tr>*@
+
+	    <tr><td class="field">Address</td> 	<td class="value">@Model.Address </td></tr>
+
+	    <tr><td class="field">Driver Lisence</td> <td class="value">@Model.DriversLicense </td></tr>
+
+	    <tr><td class="field">Contact</td> <td class="value">@Model.ContactNumber </td></tr>
+
+    	<tr><td class="field">NIC</td> <td class="value">@Model.NIC </td></tr>
+     
+			</table>	
+     
+   
+</div>
+			
+		</div>
+

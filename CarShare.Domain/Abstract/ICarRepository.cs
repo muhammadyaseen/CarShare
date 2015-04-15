@@ -21,5 +21,12 @@ namespace CarShare.Domain.Abstract
         IEnumerable<Model> GetAllModels();
 
         IEnumerable<DetailsView> GetSearchResults(string kword, int model, int make, string location);
+
+        bool Save(Car c);
+
+        bool Update(Car c);
+
+        bool Delete(int carID);
     }
+
 }

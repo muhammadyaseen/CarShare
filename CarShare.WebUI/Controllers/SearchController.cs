@@ -28,6 +28,7 @@ namespace CarShare.WebUI.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public ActionResult Search(SearchForm form)
         {
             IEnumerable<DetailsView> results = carRepo.GetSearchResults(

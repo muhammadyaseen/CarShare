@@ -18,7 +18,22 @@ namespace CarShare.Domain.Concrete
 
         public Car GetCarByID(int carID)
         {
-            throw new NotImplementedException();
+            sqlConn.Open();
+
+            SqlCommand cmd = new SqlCommand("SELECT * FROM Car Where CarID = @carID", sqlConn);
+
+            SqlParameter id = new SqlParameter("carID", SqlDbType.Int);
+            id.Value = carID;
+
+            cmd.Parameters.Add(id);
+
+            using (SqlDataReader d = cmd.ExecuteReader())
+            {
+                if ( d.Read())
+                   return GetCarFromReader(d);
+
+            }
+          
         }
 
         public IEnumerable<Car> GetCarsOwnedBy(int userID)
@@ -78,7 +93,16 @@ namespace CarShare.Domain.Concrete
 
         public bool Save(Car c)
         {
-            return false;
+            sqlConn.Open();
+
+            SqlCommand cmd = new SqlCommand("INSERT INTO Car (Title,Capacity,MakeID,Location,RegNO,[Desc]) "
+                + "VALUES('" + c.Title + "'," + c.MaxCapacity + "," + c.MakeID + ",'" + c.Location + "'," + c.RegNo + ",'" + c.CarDesc + "')");
+
+            int affected = cmd.ExecuteNonQuery();
+
+            sqlConn.Close();
+
+            return affected == 1;
         }
 
         public List<CarImage> GetCarImagesFor(int carID)
@@ -230,6 +254,21 @@ namespace CarShare.Domain.Concrete
             
         }
 
+        public bool Update(Car c)
+        {
+
+            sqlConn.Open();
+
+            SqlCommand cmd = new SqlCommand("UPDATE Car SET Title = '" + c.Title + "', Capacity= '" + c.MaxCapacity + "' WHERE CarID = " + c.CarID);
+
+            int affected = cmd.ExecuteNonQuery();
+
+            sqlConn.Close();
+
+            return affected == 1;
+        }
+
+
         public Car GetCarFromReader(SqlDataReader dr)
         {
             Car c = new Car();
@@ -258,6 +297,12 @@ namespace CarShare.Domain.Concrete
 
             return u;
 
+        }
+
+
+        public bool Delete(int carID)
+        {
+            throw new NotImplementedException();
         }
     }
 }
